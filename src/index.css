@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+/* Leaflet styles are bundled here by Vite */
+@import "leaflet/dist/leaflet.css";
+
+@theme {
+  --color-slate-950: #0b0f19;
+  --color-console: #0f172a;
+  --color-panel: #1e293b;
+  --color-screen: #0b0f19;
+  --color-spotlight: #f97316;
+  --color-borderline: #334155;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+:root {
+  color-scheme: dark;
+  background: var(--color-screen);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #0b0f19;
+  color: #e2e8f0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "SF Pro Display",
+    "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overscroll-behavior: none;
+}
+
+.leaflet-container {
+  background: #0b0f19;
+  font-family: inherit;
+  outline: none;
+}
+
+/* Dark Leaflet attribution/specificity */
+.leaflet-control-attribution {
+  background: rgba(15, 23, 42, 0.72) !important;
+  color: #64748b !important;
+  font-size: 9px !important;
+  backdrop-filter: blur(4px);
+}
+.leaflet-control-attribution a {
+  color: #94a3b8 !important;
+}
+.leaflet-bar,
+.leaflet-bar a {
+  background: #1e293b !important;
+  color: #e2e8f0 !important;
+  border-color: #334155 !important;
+}
+
+/* Custom camera marker */
+.jax-marker {
+  position: relative;
+  width: 30px;
+  height: 30px;
+}
+.jax-marker-inner {
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #1e293b, #0f172a);
+  border: 2px solid #f97316;
+  color: #fbbf24;
+  box-shadow: 0 2px 10px rgba(249, 115, 22, 0.35);
+}
+.jax-marker-fav .jax-marker-inner {
+  border-color: #fbbf24;
+}
+.jax-marker-selected .jax-marker-inner {
+  border-color: #34d399;
+  box-shadow: 0 0 0 4px rgba(52, 211, 153, 0.25);
+}
+.jax-marker .jax-status {
+  position: absolute;
+  right: -2px;
+  bottom: -1px;
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+  border: 2px solid #0b0f19;
+  background: #f59e0b;
+}
+.jax-marker.jax-live .jax-status {
+  background: #22c55e;
+  animation: jax-pulse 2s infinite;
+}
+.jax-marker.jax-dead .jax-status {
+  background: #ef4444;
+}
+@keyframes jax-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(34, 197, 94, 0);
+  }
+}
+
+/* Custom camera marker cluster */
+.jax-cluster {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 30% 25%, #f97316, #ea580c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.18), 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+.jax-cluster span {
+  font-size: 12px;
+}
+
+/* Leaflet marker cluster (default plugin icon uses class prefix) */
+.marker-cluster-small,
+.marker-cluster-medium,
+.marker-cluster-large {
+  background-color: rgba(249, 115, 22, 0.28);
+}
+.marker-cluster-small div,
+.marker-cluster-medium div,
+.marker-cluster-large div {
+  background-color: #f97316;
+  color: #fff;
+  font-weight: 700;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* Popups -> dark console cards */
+.leaflet-popup-content-wrapper {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  padding: 0;
+  overflow: hidden;
+}
+.leaflet-popup-content {
+  margin: 0;
+  line-height: 1.4;
+  width: 240px !important;
+}
+.leaflet-popup-tip {
+  background: #0f172a;
+  border: 1px solid #334155;
+}
+.leaflet-container a.leaflet-popup-close-button {
+  color: #94a3b8;
+}
+
+/* Utility */
+.jax-no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.jax-no-scrollbar {
+  scrollbar-width: none;
+}
+
+@keyframes jax-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
